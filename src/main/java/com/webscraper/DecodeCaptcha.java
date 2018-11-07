@@ -1,3 +1,5 @@
+package com.webscraper;
+
 import org.bytedeco.javacpp.BytePointer;
 
 import static org.bytedeco.javacpp.lept.*;
@@ -9,12 +11,14 @@ public class DecodeCaptcha {
         BytePointer outText;
 
         TessBaseAPI api = new TessBaseAPI();
-
+        api.SetVariable("tessedit_char_whitelist", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
         api.Init("/usr/local/Cellar/tesseract/4.0.0/share/tessdata", "eng");
+
 
         // Open input image with leptonica library
         PIX image =  pixRead(imageCaptcha);
         api.SetImage(image);
+
         // Get OCR result
         outText = api.GetUTF8Text();
 
