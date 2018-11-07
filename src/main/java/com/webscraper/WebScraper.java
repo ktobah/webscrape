@@ -3,7 +3,7 @@ package com.webscraper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import ru.yandex.qatools.ashot.AShot;
@@ -26,8 +26,8 @@ public class WebScraper {
     public WebScraper() throws IOException, InterruptedException {
 
         // Initialization of the Selenium driver
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
+        driver = new ChromeDriver();
+        //driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://isisn.nsfc.gov.cn/egrantindex/funcindex/prjsearch-list");
         CSVUtils csvUtils = new CSVUtils();
